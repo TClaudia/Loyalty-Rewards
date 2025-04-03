@@ -1,24 +1,16 @@
-
 import { join } from "path";
 import { readFileSync } from "fs";
 
 import express from "express";
-
 import serveStatic from "serve-static";
 
 import shopify from "./shopify.js";
 import productCreator from "./product-creator.js";
 import PrivacyWebhookHandlers from "./privacy.js";
 import loyaltyRoutes from "./loyalty.js"; // Import loyalty system
-import webhook from "./webhook.js"; // Import the webhooks file
-
-import webhookRouter from './webhook';  // Import the webhooks router
+import webhookRouter from './webhook.js';  // Import the webhooks router
 import dotenv from 'dotenv';
 dotenv.config(); // This will load the variables from .env into process.env
-
-
-
-
 
 const PORT = parseInt(process.env.BACKEND_PORT || process.env.PORT || "3000", 10);
 const STATIC_PATH =
@@ -38,11 +30,13 @@ app.post(shopify.config.webhooks.path, shopify.processWebhooks({ webhookHandlers
 
 // Middleware
 // @ts-ignore
-app.use("/api/*", shopify.validateAuthenticatedSession());
-// @ts-ignore
 app.use(express.json());
 // @ts-ignore
+app.use("/api/*", shopify.validateAuthenticatedSession());
+// @ts-ignore
 app.use('/api/loyalty', loyaltyRoutes); // ✅ Enable Loyalty API
+// @ts-ignore
+app.use('/api/webhooks', webhookRouter); // ✅ Enable Webhook API
 
 // Products Count API
 // @ts-ignore
@@ -119,7 +113,6 @@ app.post(
     },
   })
 );
-
 
 // Start Server
 // @ts-ignore
