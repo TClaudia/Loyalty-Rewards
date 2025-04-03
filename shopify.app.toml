@@ -1,0 +1,30 @@
+client_id = "e9f73ad0586ecb0c7b96ad4dbc01dfdb"
+application_url = "https://eclipsed-reward/"
+embedded = true
+name = "Loyalty-Rewards"
+handle = "loyalty-rewards-11"
+
+
+[build]
+automatically_update_urls_on_dev = false
+include_config_on_deploy = true
+
+
+[webhooks]
+api_version = "2025-01"
+
+
+[access_scopes]
+scopes = "write_products"
+
+
+[auth]
+redirect_urls = [ "https://eclipse-arome.myshopify.com/api/auth" ]
+
+
+[pos]
+embedded = false
+
+
+[dev]
+dev_store = "eclipse-arome.myshopify.com"

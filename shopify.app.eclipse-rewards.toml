@@ -1,0 +1,28 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "d8d7ff3efb5df5228b81e1ad39532a20"
+application_url = "https://victoria-among-photographers-tide.trycloudflare.com"
+embedded = true
+name = "Eclipse-Rewards"
+handle = "eclipse-rewards"
+
+[build]
+include_config_on_deploy = true
+automatically_update_urls_on_dev = true
+
+[webhooks]
+api_version = "2025-01"
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "write_products"
+
+[auth]
+redirect_urls = [
+  "https://victoria-among-photographers-tide.trycloudflare.com/auth/callback",
+  "https://victoria-among-photographers-tide.trycloudflare.com/auth/shopify/callback",
+  "https://victoria-among-photographers-tide.trycloudflare.com/api/auth/callback"
+]
+
+[pos]
+embedded = false
